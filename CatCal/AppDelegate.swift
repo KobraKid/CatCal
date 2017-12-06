@@ -15,18 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func applicationDidFinishLaunching(_ application: UIApplication) {
-        
-        /*
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        window?.rootViewController = UINavigationController(rootViewController: ViewController(collectionViewLayout: layout))
-        */
-        
+    func applicationDidFinishLaunching(_ application: UIApplication) {        
         // Initialize Sign-in
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)

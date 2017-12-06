@@ -14,12 +14,11 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
 
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
-    private let scopes = [kGTLRAuthScopeCalendar/* Readonly */]
+    private let scopes = [kGTLRAuthScopeCalendar]
     
     // Google API related
     private let service = GTLRCalendarService()
     let signInButton = GIDSignInButton()
-    let output = UITextView()
     
     var calendarToAccess = "u.northwestern.edu_uuh3sk34il40hq330fm95jiaic@group.calendar.google.com"
     
@@ -28,7 +27,7 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
     let cellID = "CalendarCell"
     var colorCounter = 0
     let navHeight: CGFloat = 64.0
-    var events: [String: String] = [:]
+    var events: [(id: String, description: String)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,19 +42,13 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
         GIDSignIn.sharedInstance().signInSilently()
         
         // Add the sign-in button.
-        view.addSubview(signInButton)
-        
-        // Add a UITextView to display output.
-        output.frame = CGRect(x: 0.0, y: navHeight, width: view.bounds.width, height: view.bounds.height - navHeight)
-        output.isEditable = false
-        output.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        output.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        output.isHidden = true
-        output.backgroundColor = .lightGray
-        view.addSubview(output);
+        // view.addSubview(signInButton)
+        self.collectionView!.addSubview(signInButton)
     }
     
+    // Reset local variables, update list of events, and refresh the view
     @IBAction func refreshView(_ sender: Any) {
+        colorCounter = 0
         fetchEvents()
         self.collectionView!.reloadData()
     }
@@ -66,7 +59,6 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
             service.authorizer = nil
         } else {
             signInButton.isHidden = true
-            // output.isHidden = false
             service.authorizer = user.authentication.fetcherAuthorizer()
             fetchEvents()
         }
@@ -105,13 +97,12 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
                     from: start.date,
                     dateStyle: .short,
                     timeStyle: .short)
-                outputText += "\(startString) - \(event.summary!)\n"
-                self.events[event.identifier!] = outputText
+                outputText = "\(startString) - \(event.summary!)"
+                self.events.append((id: event.identifier!, description: outputText))
             }
         } else {
-            outputText = "No upcoming events found."
+            self.events.append((id: "0", description: "No upcoming events found."))
         }
-        output.text = outputText
     }
 
     
@@ -144,7 +135,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     // Give the CollectionView the cell you want it to display at indexPath
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellID, for: indexPath) as! CalendarCell
-        cell.textLabel.text = events.popFirst()?.value
+        cell.textLabel.text = events[indexPath.item].description
         cell.backgroundColor = colorCounter % 2 == 0 ? UIColor.gray : UIColor.lightGray
         colorCounter = colorCounter + 1
         return cell
@@ -158,7 +149,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     
     // Handle what happens when you tap on a cell
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
+        print("You clicked on item \(indexPath.item), which has ID \(events[indexPath.item].id)")
     }
     
 }

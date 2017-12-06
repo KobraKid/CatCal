@@ -13,4 +13,4 @@ Another thing to note about the app (in its current state) is that when it first
 Please let me know if you have any problems cloning this project, or if you come across any errors/bugs. I'll be happy to take a look.
 
 #### The Calendar
-[Here](https://calendar.google.com/calendar/embed?src=u.northwestern.edu_uuh3sk34il40hq330fm95jiaic%40group.calendar.google.com&ctz=America%2FChicago) is a link to the test Calendar that the app uses.
+[Here](https://calendar.google.com/calendar/b/1?cid=dS5ub3J0aHdlc3Rlcm4uZWR1X3V1aDNzazM0aWw0MGhxMzMwZm05NWppYWljQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20) is a link to the test Calendar that the app uses.

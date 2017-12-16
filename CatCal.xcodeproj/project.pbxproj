@@ -14,6 +14,7 @@
 		4C0B26C61FD7687500DED93E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0B26C51FD7687500DED93E /* GoogleService-Info.plist */; };
 		4C0B26C81FD7A25800DED93E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0B26C71FD7A25800DED93E /* Main.storyboard */; };
 		4C0B26CA1FD7AE3000DED93E /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0B26C91FD7AE3000DED93E /* CalendarCell.swift */; };
+		4CED90621FE089A20064EF58 /* NewEventPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED90611FE089A20064EF58 /* NewEventPopUpViewController.swift */; };
 		8F4227732B35103190B8AD12 /* Pods_CatCal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EEC6CA0DC9F8F5A2EF9237 /* Pods_CatCal.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		4C0B26C51FD7687500DED93E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C0B26C71FD7A25800DED93E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C0B26C91FD7AE3000DED93E /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		4CED90611FE089A20064EF58 /* NewEventPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventPopUpViewController.swift; sourceTree = "<group>"; };
 		5033BA5A67C77B900F289B78 /* Pods-CatCal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatCal.release.xcconfig"; path = "Pods/Target Support Files/Pods-CatCal/Pods-CatCal.release.xcconfig"; sourceTree = "<group>"; };
 		D0EEC6CA0DC9F8F5A2EF9237 /* Pods_CatCal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CatCal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 				4C0B26B51FD7672500DED93E /* ViewController.swift */,
 				4C0B26C91FD7AE3000DED93E /* CalendarCell.swift */,
 				4C0B26C71FD7A25800DED93E /* Main.storyboard */,
+				4CED90611FE089A20064EF58 /* NewEventPopUpViewController.swift */,
 				4C0B26BA1FD7672500DED93E /* Assets.xcassets */,
 				4C0B26BC1FD7672500DED93E /* LaunchScreen.storyboard */,
 				4C0B26BF1FD7672500DED93E /* Info.plist */,
@@ -233,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CED90621FE089A20064EF58 /* NewEventPopUpViewController.swift in Sources */,
 				4C0B26B61FD7672500DED93E /* ViewController.swift in Sources */,
 				4C0B26CA1FD7AE3000DED93E /* CalendarCell.swift in Sources */,
 				4C0B26B41FD7672500DED93E /* AppDelegate.swift in Sources */,

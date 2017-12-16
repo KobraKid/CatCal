@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ A custom implementation of the UICollectinViewCell for use with the calendar view on the main screen of the app. This cell supports custom fill color, and other tweaks can be added as needed for cosmetic appeal.
+ */
 class CalendarCell: UICollectionViewCell {
  
     var textLabel: UILabel!

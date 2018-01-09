@@ -78,10 +78,7 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
      */
     @IBAction func newEventAction(_ sender: Any) {
         if !ViewController.newEventPopupIsVisible {
-            print("Creating new event")
-            addEvent(event: GCalEventBuilder(summary: "Test Event", description: "This is a test :)", startTime: NSDate(timeIntervalSinceNow: 60 * 60), endTime: NSDate(timeIntervalSinceNow: 60 * 60 * 2)), to: calendarToAccess)
-            
-            print("Opening popup")
+            print("Opening popup for create new event")
             let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newEventPopUp") as! NewEventPopUpViewController
             addChildViewController(popOverVC)
             popOverVC.view.frame = view.frame
@@ -146,7 +143,7 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
                     dateStyle: .short,
                     timeStyle: .short)
                 let description = event.descriptionProperty ?? ""
-                outputText = "\(startString) - \(event.summary!)\(description.count > 0 ? ": " + description : "")"
+                outputText = "\(startString) - \(event.summary ?? "(No title)")\(description.count > 0 ? ": " + description : "")"
                 self.events.append((id: event.identifier!, description: outputText))
                 print(outputText)
             }
@@ -279,7 +276,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
      */
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let id = events[indexPath.item].id
-        print("You clicked on item \(indexPath.item), which has ID \(id).")
+        print("You clicked on item \(indexPath.item), which has ID \(id)")
         if id != "0" {
             print("Now deleting...")
             removeEvent(eventId:id, from: calendarToAccess)

@@ -1,0 +1,6 @@
+framework module Pods_CatCal {
+  umbrella header "Pods-CatCal-umbrella.h"
+
+  export *
+  module * { export * }
+}

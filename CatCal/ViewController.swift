@@ -28,8 +28,8 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var newEventButton: UIButton!
     static var newEventPopupIsVisible = false
-    let logo = UIImageView(image: #imageLiteral(resourceName: "Icon-1025"))
-    let numberOfCells = 24
+    let logo = UIImageView(image: #imageLiteral(resourceName: "Icon-1025")) // temporary logo
+    let cellHeight = 24 // how many cells are shown vertically on the screen
     let cellID = "CalendarCell"
     let navHeight: CGFloat = 64.0
     var events: [(id: String, description: String)] = []
@@ -268,7 +268,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
      */
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath:
         IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: (view.frame.height - navHeight) / CGFloat(numberOfCells))
+        return CGSize(width: view.frame.width, height: (view.frame.height - navHeight) / CGFloat(cellHeight))
     }
     
     /**

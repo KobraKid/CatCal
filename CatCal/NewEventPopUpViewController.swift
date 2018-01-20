@@ -39,7 +39,7 @@ class NewEventPopUpViewController: UIViewController {
     @IBAction func closePopUp(_ sender: Any) {
         let button = sender as! UIButton
         if button.tag == 0 && titleTextField.text!.count > 0 && startTime.date < endTime.date {
-            log.debug("New event was valid")
+            log.debug("New event created with title \"\(titleTextField.text!)\"")
             let event = GCalEventBuilder(summary: titleTextField.text!, description: descriptionTextField.text, startTime: startTime.date as NSDate, endTime: endTime.date as NSDate)
             googleCalendar.queryAPI(requestType: .POST, params: ["event" : event])
         } else {

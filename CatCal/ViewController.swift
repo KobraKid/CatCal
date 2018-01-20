@@ -99,6 +99,7 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
      - Todo: Delay refreshing the list of events, to allow Google Calendar to reflect recent changes. Otherwise, if the list is refreshed immediately after creating or deleting events, the most recent changes will not be reflected.
      */
     @IBAction func refreshButtonPressed(_ sender: Any) {
+        log.verbose("Refresh Button Pressed")
         refreshView()
     }
     
@@ -108,6 +109,7 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
      - SeeAlso: `NewEventPopUpViewController()`
      */
     @IBAction func newEventAction(_ sender: Any) {
+        log.verbose("New Event Button Pressed")
         if !ViewController.newEventPopupIsVisible {
             log.verbose("Opening popup for create new event")
             let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newEventPopUp") as! NewEventPopUpViewController
@@ -149,7 +151,7 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
         )
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
-        log.info(alert)
+        log.info(String(describing: alert))
     }
     
 }

@@ -119,7 +119,7 @@ class GoogleAPIHandler: NSObject, APICallHandler {
                     ViewController.generalErrorTitle = "Error Deleting Event"
                     ViewController.generalErrorMessage = callbackError!.localizedDescription
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: alertKey), object: nil)
-                    log.warning(callbackError!)
+                    log.warning(String(describing: callbackError))
                 }
             })
         }
@@ -142,7 +142,7 @@ class GoogleAPIHandler: NSObject, APICallHandler {
                     ViewController.generalErrorTitle = "Error Creating Event"
                     ViewController.generalErrorMessage = callbackError!.localizedDescription
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: alertKey), object: nil)
-                    log.warning(callbackError!)
+                    log.warning(String(describing: callbackError))
                 }
             })
         }

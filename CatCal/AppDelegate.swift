@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let console = ConsoleDestination()
         #if DEBUG
             console.asynchronously = false
+        #else
+            console.minLevel = .info
         #endif
         log.addDestination(console)
     }

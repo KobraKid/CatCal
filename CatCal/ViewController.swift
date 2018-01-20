@@ -109,7 +109,7 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
      */
     @IBAction func newEventAction(_ sender: Any) {
         if !ViewController.newEventPopupIsVisible {
-            print("Opening popup for create new event")
+            log.verbose("Opening popup for create new event")
             let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "newEventPopUp") as! NewEventPopUpViewController
             addChildViewController(popOverVC)
             popOverVC.view.frame = view.frame
@@ -128,7 +128,7 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
     @objc func refreshView() {
         googleCalendar.queryAPI(requestType: .GET)
         collectionView!.reloadData()
-        print(String(describing: ViewController.events))
+        log.verbose(ViewController.events)
     }
     
     /**
@@ -149,6 +149,7 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
         )
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
+        log.info(alert)
     }
     
 }
@@ -186,9 +187,9 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
      */
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let id = ViewController.events[indexPath.item].id
-        print("You clicked on item \(indexPath.item), which has ID \(id)")
+        log.debug("You clicked on item \(indexPath.item), which has ID \(id)")
         if id != "0" {
-            print("Now deleting...")
+            log.verbose("Now deleting...")
             googleCalendar.queryAPI(requestType: .DELETE, params: ["eventId" : id]/*, onComplete: refreshView(_:)*/)
         }
     }

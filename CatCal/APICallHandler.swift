@@ -19,7 +19,7 @@ protocol APICallHandler {
 
 extension APICallHandler {
     fileprivate func notify() {
-        print("Sending notification")
+        log.verbose("Sending 🔄 \"Require Refresh\" notification")
         NotificationCenter.default.post(name: Notification.Name(rawValue: eventsRequireRefreshKey), object: self)
     }
 }
@@ -93,7 +93,7 @@ class GoogleAPIHandler: NSObject, APICallHandler {
                 let description = event.descriptionProperty ?? ""
                 outputText = "\(startString) - \(event.summary ?? "(No title)")\(description.count > 0 ? ": " + description : "")"
                 ViewController.events.append((id: event.identifier!, description: outputText))
-                print(outputText)
+                log.verbose(outputText)
             }
         } else {
             ViewController.events.append((id: "0", description: "No upcoming events found."))
@@ -119,7 +119,7 @@ class GoogleAPIHandler: NSObject, APICallHandler {
                     ViewController.generalErrorTitle = "Error Deleting Event"
                     ViewController.generalErrorMessage = callbackError!.localizedDescription
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: alertKey), object: nil)
-                    print(String(describing: callbackError))
+                    log.warning(callbackError!)
                 }
             })
         }
@@ -142,7 +142,7 @@ class GoogleAPIHandler: NSObject, APICallHandler {
                     ViewController.generalErrorTitle = "Error Creating Event"
                     ViewController.generalErrorMessage = callbackError!.localizedDescription
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: alertKey), object: nil)
-                    print("There was an error: \(String(describing: callbackError))")
+                    log.warning(callbackError!)
                 }
             })
         }

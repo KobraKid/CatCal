@@ -39,11 +39,11 @@ class NewEventPopUpViewController: UIViewController {
     @IBAction func closePopUp(_ sender: Any) {
         let button = sender as! UIButton
         if button.tag == 0 && titleTextField.text!.count > 0 && startTime.date < endTime.date {
-            print("New event valid")
+            log.debug("New event was valid")
             let event = GCalEventBuilder(summary: titleTextField.text!, description: descriptionTextField.text, startTime: startTime.date as NSDate, endTime: endTime.date as NSDate)
             googleCalendar.queryAPI(requestType: .POST, params: ["event" : event])
         } else {
-            print("Event was invalid or cancelled")
+            log.debug("Event was invalid or cancelled")
             ViewController.generalErrorTitle = "Error: Bad Event"
             ViewController.generalErrorMessage = "Either the event title was empty, or the start time was later than the end time.\nPlease try again."
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: alertKey), object: nil)

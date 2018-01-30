@@ -9,6 +9,7 @@
 import GoogleAPIClientForREST
 import GoogleSignIn
 import UIKit
+import SwiftyJSON
 
 /**
  The APICallHandler is used to handle API calls.
@@ -151,3 +152,64 @@ class GoogleAPIHandler: NSObject, APICallHandler {
 }
 
 // MARK: - Northwestern University API
+
+/**
+ Northwestern University API Handler
+ */
+class NUAPIHandler : NSObject, APICallHandler {
+    
+    // API Key
+    private let key: String = "RhvuDhGcx5wcwujn"
+    
+    func queryAPI(requestType: HTMLRequestType, params: [String : Any]) {
+        switch requestType {
+        case .GET:
+            getNUClasses(params: params)
+        default:
+            return
+        }
+    }
+    
+    private func getNUClasses(params: [String : Any]) {
+        let urlEndPoint: String = "http://api.asg.northwestern.edu/terms/?key=" + key + "&term=4503&subject=SPANISH"
+        guard let url = URL(string: urlEndPoint) else {
+            log.warning("Error, invalid URL")
+            return
+        }
+        let urlRequest = URLRequest(url: url)
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlRequest, completionHandler:{data, response, error in
+            // Guard for errors
+            guard error == nil else {
+                log.warning("Error calling \(urlEndPoint) : \(error?.localizedDescription ?? "no description available.")")
+                return
+            }
+            // Guard for empty data
+            guard let responseData = data else {
+                log.warning("No response data")
+                return
+            }
+            
+            /* Parse JSON */
+            
+            do {
+                // Guard for poorly formatted JSON
+                guard let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] else {
+                    log.warning("Could not create JSON")
+                    return
+                }
+                log.info(json.description)
+            } catch {
+                log.warning("Error parsing JSON")
+                return
+            }
+            
+        })
+        task.resume()
+    }
+    
+}
+
+
+
+

@@ -20,18 +20,19 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
     private let googleCalendar = GoogleAPIHandler()
     static let service = GTLRCalendarService() /* There can only be one signed-in instance of the service, hence the public static */
     let signInButton = GIDSignInButton()
-    // END Google API related vars
+    
+    // NU API related vars
+    private let nuAPI = NUAPIHandler()
     
     // Layout related vars
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var newEventButton: UIButton!
     static var newEventPopupIsVisible = false
     static var events: [(id: String, description: String)] = []
-    let logo = UIImageView(image: #imageLiteral(resourceName: "Icon-1025")) /* temporary "logo" */
+    let logo = UIImageView(image: #imageLiteral(resourceName: "logo"))
     let cellHeight = 24 /* how many cells are shown vertically on the screen */
     let cellID = "CalendarCell"
     let navHeight: CGFloat = 64.0
-    // END Layout related vars
     
     public static var generalErrorTitle: String = ""
     public static var generalErrorMessage: String = ""
@@ -100,6 +101,7 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
      */
     @IBAction func refreshButtonPressed(_ sender: Any) {
         log.verbose("Refresh Button Pressed")
+        nuAPI.queryAPI(requestType: .GET, params: [:])
         refreshView()
     }
     

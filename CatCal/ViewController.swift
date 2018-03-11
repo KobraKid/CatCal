@@ -133,6 +133,13 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
         googleCalendar.queryAPI(requestType: .GET)
         collectionView!.reloadData()
         log.verbose(ViewController.events)
+        unowned let unownedSelf = self
+        let deadlineTime = DispatchTime.now() + .seconds(1)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
+            unownedSelf.googleCalendar.queryAPI(requestType: .GET)
+            unownedSelf.collectionView!.reloadData()
+            log.verbose(ViewController.events)
+        })
     }
     
     /**

@@ -11,6 +11,7 @@ import UIKit
 class FriendsListViewController: UICollectionViewController {
     
     let cellID = "FriendCell"
+    let cellID2 = "ExtendedFriendCell"
     let cellCount: CGFloat = 8; /* Number of cells to be shown on screen at a time */
     var friendList: [(id: String, name: String, free: [Int])] = [] /* A list of the user's friends */
     var selectedFriend = -1
@@ -22,7 +23,7 @@ class FriendsListViewController: UICollectionViewController {
         
         collectionView!.delegate = self
         collectionView!.register(FriendCell.self, forCellWithReuseIdentifier: cellID)
-        
+        collectionView!.register(ExpandedFriendCell.self, forCellWithReuseIdentifier: cellID2)
         
         getFriends()
     }
@@ -41,6 +42,10 @@ class FriendsListViewController: UICollectionViewController {
         }
     }
 
+    @IBAction func refreshList(_ sender: Any) {
+        self.collectionView!.reloadData()
+    }
+    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -57,7 +62,15 @@ extension FriendsListViewController: UICollectionViewDelegateFlowLayout {
      Give the CollectionView the cell you want it to display at indexPath
      */
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellID, for: indexPath) as! FriendCell
+        let cell: FriendCell
+        
+        if (indexPath.item == selectedFriend) {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellID2, for: indexPath) as! ExpandedFriendCell
+            collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
+        } else {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellID, for: indexPath) as! FriendCell
+        }
+        
         cell.textView.text = friendList[indexPath.item].name
             
         if (indexPath.item == selectedFriend) {
@@ -104,9 +117,11 @@ extension FriendsListViewController: UICollectionViewDelegateFlowLayout {
         log.debug("You clicked on item \(indexPath.item), which has ID \(id)")
         if (selectedFriend == indexPath.item) {
             selectedFriend = -1
+            collectionView.isScrollEnabled = true
         }
         else {
             selectedFriend = indexPath.item;
+            collectionView.isScrollEnabled = false
         }
         collectionView.reloadData()
     }

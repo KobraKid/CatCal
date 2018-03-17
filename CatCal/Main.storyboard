@@ -229,7 +229,13 @@
                             <outlet property="delegate" destination="o0g-J2-hWw" id="PjL-Mv-qG7"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Friends" id="xZd-qS-j7q"/>
+                    <navigationItem key="navigationItem" title="Friends" id="xZd-qS-j7q">
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="6gU-Sm-bAB" userLabel="Refresh">
+                            <connections>
+                                <action selector="refreshList:" destination="o0g-J2-hWw" id="XNf-GT-Iem"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nX8-Uf-y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

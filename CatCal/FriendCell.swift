@@ -12,6 +12,7 @@ class FriendCell: UICollectionViewCell {
     
     var textView: UITextView!
     let padding: CGFloat = 10.0
+    var freeTime = [Int]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,6 +23,10 @@ class FriendCell: UICollectionViewCell {
         textView.backgroundColor = UIColor.clear
         textView.isUserInteractionEnabled = false
         contentView.addSubview(textView)
+    }
+    
+    func setFreeTime(times: [Int]) {
+        self.freeTime = times
     }
     
     /**

@@ -62,7 +62,7 @@ extension CalendarViewController: JTAppleCalendarViewDelegate,JTAppleCalendarVie
         year.text = formatter.string(from: date)
         
         formatter.dateFormat = "MMMM"
-        Month.text = formatter.string(from: date)
+        month.text = formatter.string(from: date)
     }
     
 }

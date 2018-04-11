@@ -8,4 +8,5 @@ target 'CatCal' do
     pod 'SwiftyJSON'
     # SwiftyBeaver for colorful logging:
     pod 'SwiftyBeaver'
+    pod 'JTAppleCalendar', '~> 7.0'
 end

@@ -109,6 +109,18 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
         refreshView()
     }
     
+    @IBAction func showCalendar(_ sender: Any) {
+        if !ViewController.newEventPopupIsVisible {
+            log.verbose("Opening popup for create new event")
+            let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "calendarView") as! CalendarViewController
+            addChildViewController(popOverVC)
+            popOverVC.view.frame = view.frame
+            view.addSubview(popOverVC.view)
+            popOverVC.didMove(toParentViewController: self)
+            ViewController.newEventPopupIsVisible = true
+        }
+    }
+    
     /**
      Called when the 'New Event' button is pressed. Displays a Pop-Up view over the current view.
      - Parameter sender: Can be any value, is not used.

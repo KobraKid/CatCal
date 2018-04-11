@@ -236,9 +236,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="year" destination="6gU-Sm-bAB" id="mSB-fY-J3j"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nX8-Uf-y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

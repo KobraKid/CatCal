@@ -170,6 +170,7 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
     @objc func swipeLeft() {
         log.info("Left swipe")
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        log.debug("Crash 1")
         let friendsListViewController = storyBoard.instantiateViewController(withIdentifier: "FriendsList") as! FriendsListViewController
         // self.present(friendsListViewController, animated: true, completion: nil)
         self.navigationController!.pushViewController(friendsListViewController, animated: true)

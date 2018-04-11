@@ -14,6 +14,9 @@
 		4C0B26C61FD7687500DED93E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0B26C51FD7687500DED93E /* GoogleService-Info.plist */; };
 		4C0B26C81FD7A25800DED93E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0B26C71FD7A25800DED93E /* Main.storyboard */; };
 		4C0B26CA1FD7AE3000DED93E /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0B26C91FD7AE3000DED93E /* CalendarCell.swift */; };
+		4C2DE140205DC2910061B4D0 /* ExpandedFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2DE13F205DC2910061B4D0 /* ExpandedFriendCell.swift */; };
+		4C45C851205CDDB1007A3A93 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45C850205CDDB1007A3A93 /* FriendsListViewController.swift */; };
+		4C45C853205CED28007A3A93 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45C852205CED28007A3A93 /* FriendCell.swift */; };
 		4CEA84A22012D7CB001FC89C /* APICallHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEA84A12012D7CB001FC89C /* APICallHandler.swift */; };
 		4CEA84A420131020001FC89C /* NotificationCenterKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEA84A320131020001FC89C /* NotificationCenterKeys.swift */; };
 		4CED90621FE089A20064EF58 /* NewEventPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED90611FE089A20064EF58 /* NewEventPopUpViewController.swift */; };
@@ -31,6 +34,9 @@
 		4C0B26C51FD7687500DED93E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C0B26C71FD7A25800DED93E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C0B26C91FD7AE3000DED93E /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		4C2DE13F205DC2910061B4D0 /* ExpandedFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedFriendCell.swift; sourceTree = "<group>"; };
+		4C45C850205CDDB1007A3A93 /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
+		4C45C852205CED28007A3A93 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4CEA84A12012D7CB001FC89C /* APICallHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallHandler.swift; sourceTree = "<group>"; };
 		4CEA84A320131020001FC89C /* NotificationCenterKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterKeys.swift; sourceTree = "<group>"; };
 		4CED90611FE089A20064EF58 /* NewEventPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventPopUpViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +100,10 @@
 				4CEA84A320131020001FC89C /* NotificationCenterKeys.swift */,
 				4CEA84A12012D7CB001FC89C /* APICallHandler.swift */,
 				4C0B26C91FD7AE3000DED93E /* CalendarCell.swift */,
+				4C45C852205CED28007A3A93 /* FriendCell.swift */,
+				4C2DE13F205DC2910061B4D0 /* ExpandedFriendCell.swift */,
 				4C0B26C71FD7A25800DED93E /* Main.storyboard */,
+				4C45C850205CDDB1007A3A93 /* FriendsListViewController.swift */,
 				4CED90611FE089A20064EF58 /* NewEventPopUpViewController.swift */,
 				4C0B26BA1FD7672500DED93E /* Assets.xcassets */,
 				4C0B26BC1FD7672500DED93E /* LaunchScreen.storyboard */,
@@ -248,10 +257,13 @@
 			files = (
 				4CED90621FE089A20064EF58 /* NewEventPopUpViewController.swift in Sources */,
 				4C0B26B61FD7672500DED93E /* ViewController.swift in Sources */,
+				4C45C851205CDDB1007A3A93 /* FriendsListViewController.swift in Sources */,
+				4C45C853205CED28007A3A93 /* FriendCell.swift in Sources */,
 				4C0B26CA1FD7AE3000DED93E /* CalendarCell.swift in Sources */,
 				4CEA84A420131020001FC89C /* NotificationCenterKeys.swift in Sources */,
 				4C0B26B41FD7672500DED93E /* AppDelegate.swift in Sources */,
 				4CEA84A22012D7CB001FC89C /* APICallHandler.swift in Sources */,
+				4C2DE140205DC2910061B4D0 /* ExpandedFriendCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

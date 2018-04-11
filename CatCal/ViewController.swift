@@ -30,9 +30,9 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
     static var newEventPopupIsVisible = false
     static var events: [(id: String, description: String)] = []
     let logo = UIImageView(image: #imageLiteral(resourceName: "logo"))
-    let cellHeight = 24 /* how many cells are shown vertically on the screen */
+    let cellCount = 24 /* how many cells are shown vertically on the screen */
     let cellID = "CalendarCell"
-    let navHeight: CGFloat = 64.0
+    public static let navHeight: CGFloat = 64.0
     
     public static var generalErrorTitle: String = ""
     public static var generalErrorMessage: String = ""
@@ -66,6 +66,10 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
         // Register NotificationCenter listener
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.refreshView), name: NSNotification.Name(rawValue: eventsRequireRefreshKey), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showAlert), name: NSNotification.Name(rawValue: alertKey), object: nil)
+        
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipeLeft))
+        swipeGesture.direction = .left
+        self.view.addGestureRecognizer(swipeGesture)
     }
     
     /**
@@ -145,6 +149,13 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
         googleCalendar.queryAPI(requestType: .GET)
         collectionView!.reloadData()
         log.verbose(ViewController.events)
+        unowned let unownedSelf = self
+        let deadlineTime = DispatchTime.now() + .seconds(1)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
+            unownedSelf.googleCalendar.queryAPI(requestType: .GET)
+            unownedSelf.collectionView!.reloadData()
+            log.verbose(ViewController.events)
+        })
     }
     
     /**
@@ -166,6 +177,14 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
         log.info(String(describing: alert))
+    }
+    
+    @objc func swipeLeft() {
+        log.info("Left swipe")
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let friendsListViewController = storyBoard.instantiateViewController(withIdentifier: "FriendsList") as! FriendsListViewController
+        // self.present(friendsListViewController, animated: true, completion: nil)
+        self.navigationController!.pushViewController(friendsListViewController, animated: true)
     }
     
 }
@@ -195,7 +214,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
      */
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath:
         IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: (view.frame.height - navHeight) / CGFloat(cellHeight))
+        return CGSize(width: view.frame.width, height: (view.frame.height - ViewController.navHeight) / CGFloat(cellCount))
     }
     
     /**

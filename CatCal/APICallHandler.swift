@@ -171,11 +171,14 @@ class NUAPIHandler : NSObject, APICallHandler {
     }
     
     private func getNUClasses(params: [String : Any]) {
-        let urlEndPoint: String = "http://api.asg.northwestern.edu/terms/?key=" + key + "&term=4503&subject=SPANISH"
+        let urlEndPoint: String = "https://api.asg.northwestern.edu/terms/?key=" + key + "&term=4503&subject=SPANISH"
         guard let url = URL(string: urlEndPoint) else {
             log.warning("Error, invalid URL")
             return
         }
+        
+        log.verbose(urlEndPoint)
+        
         let urlRequest = URLRequest(url: url)
         let session = URLSession.shared
         let task = session.dataTask(with: urlRequest, completionHandler:{data, response, error in
@@ -193,6 +196,7 @@ class NUAPIHandler : NSObject, APICallHandler {
             /* Parse JSON */
             
             do {
+                log.verbose("Parsing")
                 // Guard for poorly formatted JSON
                 guard let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] else {
                     log.warning("Could not create JSON")

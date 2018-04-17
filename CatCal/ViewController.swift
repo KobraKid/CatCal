@@ -110,15 +110,18 @@ class ViewController: UICollectionViewController, GIDSignInDelegate, GIDSignInUI
     }
     
     @IBAction func showCalendar(_ sender: Any) {
-        if !ViewController.newEventPopupIsVisible {
-            log.verbose("Opening popup for create new event")
-            let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "calendarView") as! CalendarViewController
-            addChildViewController(popOverVC)
-            popOverVC.view.frame = view.frame
-            view.addSubview(popOverVC.view)
-            popOverVC.didMove(toParentViewController: self)
-            ViewController.newEventPopupIsVisible = true
-        }
+//        if !ViewController.newEventPopupIsVisible {
+            log.verbose("Opening the monthly view")
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let calendarViewController = storyBoard.instantiateViewController(withIdentifier: "calendarView") as! CalendarViewController
+            self.navigationController!.pushViewController(calendarViewController, animated: true)
+//            let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "calendarView") as! CalendarViewController
+//            addChildViewController(popOverVC)
+//            popOverVC.view.frame = view.frame
+//            view.addSubview(popOverVC.view)
+//            popOverVC.didMove(toParentViewController: self)
+//            ViewController.newEventPopupIsVisible = true
+//        }
     }
     
     /**

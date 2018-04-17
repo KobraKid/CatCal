@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rYB-lx-e7p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mdb-40-Ux5">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,18 +19,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7f-gm-6UH">
-                                <rect key="frame" x="16" y="20" width="343" height="627"/>
+                                <rect key="frame" x="36" y="55" width="343" height="627"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PsF-CX-uig">
-                                        <rect key="frame" x="8" y="65" width="97" height="30"/>
+                                        <rect key="frame" x="8" y="65" width="327" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dhz-8a-S6Q">
-                                        <rect key="frame" x="8" y="103" width="97" height="30"/>
+                                        <rect key="frame" x="8" y="103" width="327" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -121,12 +120,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="its-ZT-Crb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="614" y="703"/>
+            <point key="canvasLocation" x="612" y="-470"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="mfO-yN-DLB">
             <objects>
-                <viewController storyboardIdentifier="calendarView" id="f8G-nz-gX3" customClass="CalendarViewController" customModule="CatCal" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="calendarView" id="f8G-nz-gX3" customClass="MonthlyViewController" customModule="CatCal" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Jq-pG-7F5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -271,7 +270,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kmy-Dd-XOP"/>
                     </view>
-                    <navigationItem key="navigationItem" id="le8-XI-G2B"/>
+                    <navigationItem key="navigationItem" id="le8-XI-G2B">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="s9U-DR-70H">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="c24-EB-mZO">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Friends"/>
+                                <connections>
+                                    <action selector="openFriendsList:" destination="f8G-nz-gX3" eventType="touchUpInside" id="39f-KA-HKi"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="month" destination="dEq-LB-lZZ" id="iFp-66-riV"/>
                         <outlet property="year" destination="IiL-ul-ddf" id="LE4-rg-SEf"/>
@@ -279,12 +289,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cs-Kb-i7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3789.8550724637685" y="-7.3369565217391308"/>
+            <point key="canvasLocation" x="612" y="1498"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="IJ0-KG-XMt">
             <objects>
-                <viewController id="HTe-gZ-GPv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Week" id="HTe-gZ-GPv" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1yO-gt-DxE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -295,12 +305,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHX-l0-g4L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5456.521739130435" y="-7.3369565217391308"/>
+            <point key="canvasLocation" x="613" y="836"/>
         </scene>
-        <!--Calendar-->
+        <!--Daily View Controller-->
         <scene sceneID="Ux3-Yg-Eg8">
             <objects>
-                <collectionViewController id="pjF-hN-2cU" customClass="ViewController" customModule="CatCal" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="Day" id="pjF-hN-2cU" customClass="DailyViewController" customModule="CatCal" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="oax-Gv-TSL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -326,27 +336,10 @@
                             <outlet property="delegate" destination="pjF-hN-2cU" id="R9G-yO-NQl"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Calendar" id="Z2e-5y-ugd">
-                        <leftBarButtonItems>
-                            <barButtonItem style="plain" id="SYR-RO-ybv">
-                                <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="G5h-Ef-5IR">
-                                    <rect key="frame" x="20.000000000000007" y="7" width="52.999999999999993" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Refresh"/>
-                                    <connections>
-                                        <action selector="refreshButtonPressed:" destination="pjF-hN-2cU" eventType="touchUpInside" id="WF8-ih-s9x"/>
-                                    </connections>
-                                </button>
-                            </barButtonItem>
-                            <barButtonItem title="Cal" id="jBw-gW-VTu">
-                                <connections>
-                                    <action selector="showCalendar:" destination="pjF-hN-2cU" id="B1Y-ye-KLK"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="W8j-DP-fUX">
+                    <navigationItem key="navigationItem" id="Z2e-5y-ugd">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="W8j-DP-fUX">
                             <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L3V-aE-Vst">
-                                <rect key="frame" x="321" y="7" width="73" height="30"/>
+                                <rect key="frame" x="20" y="7" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="New Event"/>
                                 <connections>
@@ -354,20 +347,75 @@
                                 </connections>
                             </button>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="tdS-IR-dcV">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Mma-zf-FdH">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Friends"/>
+                                <connections>
+                                    <action selector="openFriendsList:" destination="pjF-hN-2cU" eventType="touchUpInside" id="fEF-X1-Mce"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="newEventButton" destination="L3V-aE-Vst" id="tIv-Sk-295"/>
-                        <outlet property="refreshButton" destination="G5h-Ef-5IR" id="Qan-GO-KyS"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NfM-l1-Aon" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBar contentMode="scaleToFill" id="Hwq-yf-tF7">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <items>
+                        <tabBarItem systemItem="favorites" id="F0K-QU-bTm"/>
+                        <tabBarItem systemItem="more" id="lYU-Bs-3Mf"/>
+                    </items>
+                </tabBar>
             </objects>
-            <point key="canvasLocation" x="614" y="-7"/>
+            <point key="canvasLocation" x="612" y="187"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Login View Controller-->
+        <scene sceneID="XRD-Zb-ej5">
+            <objects>
+                <viewController id="Mdb-40-Ux5" customClass="LoginViewController" customModule="CatCal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2p8-wG-kbT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="nUk-cE-uDz"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Sd-TI-28N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2225" y="836"/>
+        </scene>
+        <!--Calendar View Controller-->
+        <scene sceneID="3sH-FN-AfI">
+            <objects>
+                <tabBarController storyboardIdentifier="Main" id="Qf7-mQ-XIu" customClass="CalendarViewController" customModule="CatCal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EhL-UN-CoW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="rYB-lx-e7p" kind="relationship" relationship="viewControllers" id="4vP-pA-Jpe"/>
+                        <segue destination="qCB-Vt-ajX" kind="relationship" relationship="viewControllers" id="8t4-Xw-x25"/>
+                        <segue destination="V3B-8U-j1G" kind="relationship" relationship="viewControllers" id="S84-5J-PCX"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JrI-If-cwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1454" y="836"/>
+        </scene>
+        <!--DAY-->
         <scene sceneID="3Gq-3q-rbu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rYB-lx-e7p" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="DAY" id="mA5-J6-V8x">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pD3-82-9c9">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -380,7 +428,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ORe-sB-Kgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-266" y="-6"/>
+            <point key="canvasLocation" x="-268" y="188"/>
         </scene>
         <!--Friends-->
         <scene sceneID="15I-cf-aZO">
@@ -421,7 +469,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nX8-Uf-y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2199" y="-7"/>
+            <point key="canvasLocation" x="2222" y="188"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kRJ-y3-XQB">
@@ -439,12 +487,15 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecL-Tx-H9l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489.5999999999999" y="-7.1964017991004505"/>
+            <point key="canvasLocation" x="1422" y="187"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--WEEK-->
         <scene sceneID="NZ7-CL-eYK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qCB-Vt-ajX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="WEEK" id="8tk-9B-88m">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="92r-DM-ZgJ">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -457,25 +508,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z2t-4f-vAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4547.826086956522" y="-7.3369565217391308"/>
+            <point key="canvasLocation" x="-267" y="837"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ZgX-4W-FJ3">
+        <!--MONTH-->
+        <scene sceneID="HCW-Wj-Gnp">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yho-Yn-3rj" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V3B-8U-j1G" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="MONTH" id="CJb-8L-s8D">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-16"/>
+                    </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cvl-ku-Gh8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jXD-7A-Emh">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="f8G-nz-gX3" kind="relationship" relationship="rootViewController" id="ls9-4b-rb5"/>
+                        <segue destination="f8G-nz-gX3" kind="relationship" relationship="rootViewController" id="5tz-8i-URR"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5wh-cB-Ugj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LeC-gQ-TgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2882.608695652174" y="-7.3369565217391308"/>
+            <point key="canvasLocation" x="-268" y="1498"/>
         </scene>
     </scenes>
 </document>

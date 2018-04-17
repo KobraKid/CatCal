@@ -103,7 +103,7 @@ extension FriendsListViewController: UICollectionViewDelegateFlowLayout {
      */
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath:
         IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: (indexPath.item == selectedFriend ? cellCount : 1) * (view.frame.height - ViewController.navHeight) / cellCount)
+        return CGSize(width: view.frame.width, height: (indexPath.item == selectedFriend ? cellCount : 1) * (view.frame.height - DailyViewController.navHeight) / cellCount)
     }
     
     /**

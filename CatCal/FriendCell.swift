@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ A cell used to represent the collapsed/minimized version of a Friend on the Friends page.
+ */
 class FriendCell: UICollectionViewCell {
     
     var textView: UITextView!

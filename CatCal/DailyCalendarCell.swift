@@ -9,9 +9,11 @@
 import UIKit
 
 /**
- A custom implementation of the UICollectionViewCell for use with the daily view on the main screen of the app. This cell supports custom fill color, and other tweaks can be added as needed for cosmetic appeal.
+ A custom implementation of the UICollectionViewCell for use with the daily view
+ on the main screen of the app. This cell supports custom fill color, and other
+ tweaks can be added as needed for cosmetic appeal.
  */
-class CalendarCell: UICollectionViewCell {
+class DailyCalendarCell: UICollectionViewCell {
  
     var textLabel: UILabel!
     let padding: CGFloat = 10.0

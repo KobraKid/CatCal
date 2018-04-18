@@ -10,16 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--New Event Pop Up View Controller-->
+        <!--New Event View Controller-->
         <scene sceneID="1Mt-aG-TFm">
             <objects>
-                <viewController storyboardIdentifier="newEventPopUp" id="8W0-mg-MKs" customClass="NewEventPopUpViewController" customModule="CatCal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewEvent" id="8W0-mg-MKs" customClass="NewEventViewController" customModule="CatCal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hEj-Ta-o1p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7f-gm-6UH">
-                                <rect key="frame" x="36" y="55" width="343" height="627"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PsF-CX-uig">
@@ -72,14 +72,14 @@
                                         </connections>
                                     </button>
                                     <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="1WJ-s0-380">
-                                        <rect key="frame" x="0.0" y="389" width="343" height="162"/>
+                                        <rect key="frame" x="0.0" y="389" width="414" height="162"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <date key="date" timeIntervalSinceReferenceDate="535104406.18014598">
                                             <!--2017-12-16 08:06:46 +0000-->
                                         </date>
                                     </datePicker>
                                     <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="MIa-Lu-mq9">
-                                        <rect key="frame" x="0.0" y="181" width="343" height="162"/>
+                                        <rect key="frame" x="0.0" y="181" width="414" height="162"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <date key="date" timeIntervalSinceReferenceDate="535104421.14658201">
                                             <!--2017-12-16 08:07:01 +0000-->
@@ -103,7 +103,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
+                                        <integer key="value" value="0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -111,6 +111,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="KLG-oo-EZW"/>
                     </view>
+                    <navigationItem key="navigationItem" id="lUJ-Sy-I55"/>
                     <connections>
                         <outlet property="descriptionTextField" destination="dhz-8a-S6Q" id="UHP-e8-dye"/>
                         <outlet property="endTime" destination="1WJ-s0-380" id="DMg-ly-gke"/>
@@ -120,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="its-ZT-Crb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="612" y="-470"/>
+            <point key="canvasLocation" x="2221.739130434783" y="835.59782608695662"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="mfO-yN-DLB">
@@ -221,7 +222,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomCell" id="jYu-7k-0jo" customClass="CustomCell" customModule="CatCal">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomCell" id="jYu-7k-0jo" customClass="MonthlyCalendarCell" customModule="CatCal">
                                                 <rect key="frame" x="0.0" y="0.0" width="82" height="75"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -337,16 +338,6 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="Z2e-5y-ugd">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="W8j-DP-fUX">
-                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="L3V-aE-Vst">
-                                <rect key="frame" x="20" y="7" width="73" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="New Event"/>
-                                <connections>
-                                    <action selector="newEventAction:" destination="pjF-hN-2cU" eventType="touchUpInside" id="EHs-pc-F7X"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="tdS-IR-dcV">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Mma-zf-FdH">
                                 <rect key="frame" x="302" y="7" width="92" height="30"/>
@@ -358,9 +349,6 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="newEventButton" destination="L3V-aE-Vst" id="tIv-Sk-295"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NfM-l1-Aon" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBar contentMode="scaleToFill" id="Hwq-yf-tF7">
@@ -403,6 +391,7 @@
                         <segue destination="rYB-lx-e7p" kind="relationship" relationship="viewControllers" id="4vP-pA-Jpe"/>
                         <segue destination="qCB-Vt-ajX" kind="relationship" relationship="viewControllers" id="8t4-Xw-x25"/>
                         <segue destination="V3B-8U-j1G" kind="relationship" relationship="viewControllers" id="S84-5J-PCX"/>
+                        <segue destination="1y5-th-OpF" kind="relationship" relationship="viewControllers" id="ILc-6h-ytB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JrI-If-cwu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -459,13 +448,7 @@
                             <outlet property="delegate" destination="o0g-J2-hWw" id="PjL-Mv-qG7"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Friends" id="xZd-qS-j7q">
-                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="6gU-Sm-bAB" userLabel="Refresh">
-                            <connections>
-                                <action selector="refreshList:" destination="o0g-J2-hWw" id="XNf-GT-Iem"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Friends" id="xZd-qS-j7q"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nX8-Uf-y7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -530,6 +513,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LeC-gQ-TgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-268" y="1498"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MBf-3W-cqG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1y5-th-OpF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="more" id="dHx-2v-JXI"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FAN-3T-AT5">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8W0-mg-MKs" kind="relationship" relationship="rootViewController" id="ObG-O5-Mrc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="keT-sF-gOd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1422" y="836"/>
         </scene>
     </scenes>
 </document>

@@ -94,7 +94,7 @@ class GoogleAPIHandler: NSObject, APICallHandler {
                 let description = event.descriptionProperty ?? ""
                 outputText = "\(startString) - \(event.summary ?? "(No title)")\(description.count > 0 ? ": " + description : "")"
                 DailyViewController.events.append((id: event.identifier!, description: outputText))
-                log.verbose(outputText)
+                //log.verbose(outputText)
             }
         } else {
             DailyViewController.events.append((id: "0", description: "No upcoming events found."))
@@ -114,7 +114,7 @@ class GoogleAPIHandler: NSObject, APICallHandler {
             let query = GTLRCalendarQuery_EventsDelete.query(withCalendarId: calendarToAccess, eventId: eventId)
             LoginViewController.service.executeQuery(query, completionHandler: {(callbackTicket, event, callbackError) in
                 if callbackError == nil {
-                    print("Deletion succeeded")
+                    log.verbose("Deletion succeeded")
                     self.notify()
                 } else {
                     DailyViewController.generalErrorTitle = "Error Deleting Event"
@@ -137,7 +137,7 @@ class GoogleAPIHandler: NSObject, APICallHandler {
             let query = GTLRCalendarQuery_EventsInsert.query(withObject: event, calendarId: calendarToAccess)
             LoginViewController.service.executeQuery(query, completionHandler: {(callbackTicket, event, callbackError) in
                 if callbackError == nil {
-                    print("Add succeeded")
+                    log.verbose("Add succeeded")
                     self.notify()
                 } else {
                     DailyViewController.generalErrorTitle = "Error Creating Event"
@@ -196,7 +196,6 @@ class NUAPIHandler : NSObject, APICallHandler {
             /* Parse JSON */
             
             do {
-                log.verbose("Parsing")
                 // Guard for poorly formatted JSON
                 guard let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] else {
                     log.warning("Could not create JSON")

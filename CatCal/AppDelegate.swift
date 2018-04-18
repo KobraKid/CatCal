@@ -25,10 +25,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
         // Set up logging
         let console = ConsoleDestination()
+        console.format = "$DHH:mm:ss.SSS$d $L $N.$F:$l $M"
+        console.levelString.verbose = "⚪️ VERBOSE"
+        console.levelString.debug = "🐞 DEBUG"
+        console.levelString.info = "🔵 INFO"
+        console.levelString.warning = "⚫️ WARNING"
+        console.levelString.error = "🔴 ERROR"
         #if DEBUG
             console.asynchronously = false
         #else
-            console.minLevel = .info
+            console.minLevel = .warning
         #endif
         log.addDestination(console)
     }

@@ -29,7 +29,7 @@ class MonthlyViewController: UIViewController {
 }
 
 func handleCelltextColor(view: JTAppleCell?, cellState: CellState){
-    guard let validCell = view as? CustomCell else { return }
+    guard let validCell = view as? MonthlyCalendarCell else { return }
     
     if cellState.dateBelongsTo == .thisMonth {
         validCell.dateLabel.textColor = UIColor.white
@@ -45,7 +45,7 @@ extension MonthlyViewController: JTAppleCalendarViewDelegate,JTAppleCalendarView
     }
     
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
-        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
+        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! MonthlyCalendarCell
         cell.dateLabel.text = cellState.text
         handleCelltextColor(view: cell, cellState: cellState)
         return cell

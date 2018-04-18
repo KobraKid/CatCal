@@ -9,11 +9,14 @@ import GoogleAPIClientForREST
 import GoogleSignIn
 import UIKit
 
+/**
+ A View Controller for handling pre-app functionality, namely logging in and signing up
+ */
 class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
     // Google API related vars
     private let scopes = [kGTLRAuthScopeCalendar] /* If modifying these scopes, delete your previously saved credentials by resetting the iOS simulator or uninstalling the app. */
-    static let service = GTLRCalendarService() /* There can only be one signed-in instance of the service, hence the public static */
+    static let service = GTLRCalendarService() /* There can only be one signed-in instance of the service, hence the static */
     let signInButton = GIDSignInButton()
     
     let logo = UIImageView(image: #imageLiteral(resourceName: "logo"))
@@ -48,14 +51,14 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
      */
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
-            // showAlert(title: "Authentication Error", message: error.localizedDescription)
+            log.error("Failed to log in")
             DailyViewController.generalErrorTitle = "Authentication Error"
             DailyViewController.generalErrorMessage = error.localizedDescription
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: alertKey), object: nil)
             LoginViewController.service.authorizer = nil
         } else {
             LoginViewController.service.authorizer = user.authentication.fetcherAuthorizer()
-            log.debug("Test. Logged in")
+            log.debug("Logged in successfully")
             let tabController = self.storyboard!.instantiateViewController(withIdentifier: "Main") as! CalendarViewController
             tabController.selectedIndex = 0
             self.present(tabController, animated: true, completion: nil)

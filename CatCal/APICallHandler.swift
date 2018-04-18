@@ -64,7 +64,7 @@ class GoogleAPIHandler: NSObject, APICallHandler {
         query.timeMin = GTLRDateTime(date: Date())
         query.singleEvents = true
         query.orderBy = kGTLRCalendarOrderByStartTime
-        ViewController.service.executeQuery(query, delegate: self, didFinish: #selector(updateEventsList(ticket:finishedWithObject:error:)))
+        LoginViewController.service.executeQuery(query, delegate: self, didFinish: #selector(updateEventsList(ticket:finishedWithObject:error:)))
     }
     
     /**
@@ -76,14 +76,14 @@ class GoogleAPIHandler: NSObject, APICallHandler {
         error : Error?) {
         
         if let error = error {
-            ViewController.generalErrorTitle = "Error Fetching Events"
-            ViewController.generalErrorMessage = error.localizedDescription
+            DailyViewController.generalErrorTitle = "Error Fetching Events"
+            DailyViewController.generalErrorMessage = error.localizedDescription
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: alertKey), object: nil)
             return
         }
         
         var outputText = ""
-        ViewController.events.removeAll()
+        DailyViewController.events.removeAll()
         if let events = response.items, !events.isEmpty {
             for event in events {
                 let start = event.start!.dateTime ?? event.start!.date!
@@ -93,11 +93,11 @@ class GoogleAPIHandler: NSObject, APICallHandler {
                     timeStyle: .short)
                 let description = event.descriptionProperty ?? ""
                 outputText = "\(startString) - \(event.summary ?? "(No title)")\(description.count > 0 ? ": " + description : "")"
-                ViewController.events.append((id: event.identifier!, description: outputText))
-                log.verbose(outputText)
+                DailyViewController.events.append((id: event.identifier!, description: outputText))
+                //log.verbose(outputText)
             }
         } else {
-            ViewController.events.append((id: "0", description: "No upcoming events found."))
+            DailyViewController.events.append((id: "0", description: "No upcoming events found."))
         }
     }
     
@@ -112,13 +112,13 @@ class GoogleAPIHandler: NSObject, APICallHandler {
     private func removeEvent(_ params: [String : Any]) {
         if let eventId = params["eventId"] as! String? {
             let query = GTLRCalendarQuery_EventsDelete.query(withCalendarId: calendarToAccess, eventId: eventId)
-            ViewController.service.executeQuery(query, completionHandler: {(callbackTicket, event, callbackError) in
+            LoginViewController.service.executeQuery(query, completionHandler: {(callbackTicket, event, callbackError) in
                 if callbackError == nil {
-                    print("Deletion succeeded")
+                    log.verbose("Deletion succeeded")
                     self.notify()
                 } else {
-                    ViewController.generalErrorTitle = "Error Deleting Event"
-                    ViewController.generalErrorMessage = callbackError!.localizedDescription
+                    DailyViewController.generalErrorTitle = "Error Deleting Event"
+                    DailyViewController.generalErrorMessage = callbackError!.localizedDescription
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: alertKey), object: nil)
                     log.warning(String(describing: callbackError))
                 }
@@ -135,13 +135,13 @@ class GoogleAPIHandler: NSObject, APICallHandler {
     private func addEvent(_ params: [String: Any]) {
         if let event = params["event"] as! GTLRCalendar_Event? {
             let query = GTLRCalendarQuery_EventsInsert.query(withObject: event, calendarId: calendarToAccess)
-            ViewController.service.executeQuery(query, completionHandler: {(callbackTicket, event, callbackError) in
+            LoginViewController.service.executeQuery(query, completionHandler: {(callbackTicket, event, callbackError) in
                 if callbackError == nil {
-                    print("Add succeeded")
+                    log.verbose("Add succeeded")
                     self.notify()
                 } else {
-                    ViewController.generalErrorTitle = "Error Creating Event"
-                    ViewController.generalErrorMessage = callbackError!.localizedDescription
+                    DailyViewController.generalErrorTitle = "Error Creating Event"
+                    DailyViewController.generalErrorMessage = callbackError!.localizedDescription
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: alertKey), object: nil)
                     log.warning(String(describing: callbackError))
                 }
@@ -196,7 +196,6 @@ class NUAPIHandler : NSObject, APICallHandler {
             /* Parse JSON */
             
             do {
-                log.verbose("Parsing")
                 // Guard for poorly formatted JSON
                 guard let json = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: Any] else {
                     log.warning("Could not create JSON")

@@ -8,6 +8,10 @@
 
 import UIKit
 
+/**
+ The View Controller for the Friends List. Displays a list of the user's friends
+ and allows them to be expanded when tapped on.
+ */
 class FriendsListViewController: UICollectionViewController {
     
     let cellID = "FriendCell"
@@ -16,6 +20,11 @@ class FriendsListViewController: UICollectionViewController {
     var friendList: [(id: String, name: String, free: [Int])] = [] /* A list of the user's friends */
     var selectedFriend = -1
     public static let myFreeTime = [6, 2, 1, 3, 8]
+    public static let friendNames = ["Joseph L.", "Sydney K.", "Timothy T.",
+                               "Patrick S.", "Sam O.", "Ted M.",
+                               "Janie K.", "Thomas A.", "Samus A.",
+                               "Michael H.", "Hannah L.", "Alexa A."]
+    private var refreshTimer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,22 +37,36 @@ class FriendsListViewController: UICollectionViewController {
         getFriends()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController!.tabBar.isHidden = true
+        #if DEBUG
+        refreshTimer?.invalidate()
+        refreshTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: { [weak self] _ in
+            self?.collectionView!.reloadData()
+        })
+        #endif
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController!.tabBar.isHidden = false
+        #if DEBUG
+        refreshTimer?.invalidate()
+        #endif
+    }
+    
     func getFriends() {
         let friendCount = 12;
         for i in 0...(friendCount - 1) {
             let gaps: Int = Int(arc4random_uniform(6))
             var free: [Int] = []
             let maxGap: Int = 24 / (gaps + 1)
-            log.debug(String(describing: gaps) + " " + String(describing: maxGap))
             for _ in 0...gaps {
                 free.append(1 + Int(arc4random_uniform(UInt32(maxGap))))
             }
-            friendList.append((id: String(describing: i), name: "Friend #" + String(describing: i), free: free))
+            friendList.append((id: String(describing: i), name: FriendsListViewController.friendNames[i], free: free))
         }
-    }
-
-    @IBAction func refreshList(_ sender: Any) {
-        self.collectionView!.reloadData()
     }
     
 }
@@ -103,7 +126,7 @@ extension FriendsListViewController: UICollectionViewDelegateFlowLayout {
      */
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath:
         IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: (indexPath.item == selectedFriend ? cellCount : 1) * (view.frame.height - ViewController.navHeight) / cellCount)
+        return CGSize(width: view.frame.width, height: (indexPath.item == selectedFriend ? cellCount : 1) * (view.frame.height - DailyViewController.navHeight) / cellCount)
     }
     
     /**
@@ -125,7 +148,7 @@ extension FriendsListViewController: UICollectionViewDelegateFlowLayout {
      */
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let id = friendList[indexPath.item].id
-        log.debug("You clicked on item \(indexPath.item), which has ID \(id)")
+        log.debug("You clicked on Friend #\(indexPath.item), which has ID \(id) and name \(FriendsListViewController.friendNames[indexPath.item])")
         // Clear the selected friend, reenable scrolling
         if (selectedFriend == indexPath.item) {
             selectedFriend = -1

@@ -44,8 +44,8 @@ class NewEventPopUpViewController: UIViewController {
             googleCalendar.queryAPI(requestType: .POST, params: ["event" : event])
         } else {
             log.debug("Event was invalid or cancelled")
-            ViewController.generalErrorTitle = "Error: Bad Event"
-            ViewController.generalErrorMessage = "Either the event title was empty, or the start time was later than the end time.\nPlease try again."
+            CalendarViewController.generalErrorTitle = "Error: Bad Event"
+            CalendarViewController.generalErrorMessage = "Either the event title was empty, or the start time was later than the end time.\nPlease try again."
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: alertKey), object: nil)
         }
         removeAnimation()
@@ -74,7 +74,7 @@ class NewEventPopUpViewController: UIViewController {
             self.view.alpha = 0.0
         }, completion: { (finished: Bool) in
             if finished {
-                ViewController.newEventPopupIsVisible = false
+                CalendarViewController.newEventPopupIsVisible = false
                 self.view.removeFromSuperview()
             }
         })

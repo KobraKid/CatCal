@@ -9,6 +9,6 @@
 import UIKit
 import JTAppleCalendar
 
-class CustomCell: JTAppleCell {
+class MonthlyCalendarCell: JTAppleCell {
     @IBOutlet weak var dateLabel: UILabel!
 }

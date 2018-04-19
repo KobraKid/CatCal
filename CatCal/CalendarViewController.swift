@@ -16,26 +16,23 @@ class CalendarViewController: UIViewController {
     let formatter = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
 }
 
 func handleCelltextColor(view: JTAppleCell?, cellState: CellState){
     guard let validCell = view as? CustomCell else { return }
-    
+
     if cellState.dateBelongsTo == .thisMonth {
         validCell.dateLabel.textColor = UIColor.white
     } else {
         validCell.dateLabel.textColor = UIColor.gray
     }
-    
+
 }
 
 extension CalendarViewController: JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSource {
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-    
     }
     
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
@@ -49,8 +46,10 @@ extension CalendarViewController: JTAppleCalendarViewDelegate,JTAppleCalendarVie
         formatter.dateFormat = "yyyy MM DD"
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
+        
         let startDate = formatter.date(from: "2016 03 01")!
         let endDate = formatter.date(from: "2030 12 31")!
+        
         let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
         return parameters
     }

@@ -10,11 +10,14 @@ import GoogleAPIClientForREST
 import UIKit
 
 /**
- A ViewController used to control a **New Event** button press. Creates a popup over the previous view, with a semi-transparent background. Prompts the user to fill out information in order to create a new Google Calendar event.
+ A ViewController used to control a **New Event** button press.
+ Creates a modal view, prompts the user to fill out information
+ in order to create a new Google Calendar event.
  
- Once sufficient event details have been specified and **Okay** is pressed, a new `GTLRCalendar_Event` object is created, and sent to an API query.
+ Once sufficient event details have been specified and **Okay** is pressed,
+ a new `GTLRCalendar_Event` object is created, and sent to an API query.
  */
-class NewEventPopUpViewController: UIViewController {
+class NewEventViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
@@ -29,8 +32,16 @@ class NewEventPopUpViewController: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        showAnimation()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController!.tabBar.isHidden = true
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.tabBarController!.tabBar.isHidden = false
     }
     
     /**
@@ -42,42 +53,15 @@ class NewEventPopUpViewController: UIViewController {
             log.debug("New event created with title \"\(titleTextField.text!)\"")
             let event = GCalEventBuilder(summary: titleTextField.text!, description: descriptionTextField.text, startTime: startTime.date as NSDate, endTime: endTime.date as NSDate)
             googleCalendar.queryAPI(requestType: .POST, params: ["event" : event])
+        } else if button.tag == -1 {
+            log.debug("Event was cancelled")
         } else {
-            log.debug("Event was invalid or cancelled")
-            CalendarViewController.generalErrorTitle = "Error: Bad Event"
-            CalendarViewController.generalErrorMessage = "Either the event title was empty, or the start time was later than the end time.\nPlease try again."
+            log.debug("Event was invalid")
+            DailyViewController.generalErrorTitle = "Error: Bad Event"
+            DailyViewController.generalErrorMessage = "Either the event title was empty, or the start time was later than the end time.\nPlease try again."
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: alertKey), object: nil)
         }
-        removeAnimation()
-    }
-    
-    // MARK: - Animation
-    
-    /**
-     Animation for when the popup is opened.
-     */
-    func showAnimation() {
-        view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        view.alpha = 0.0
-        UIView.animate(withDuration: 0.25, animations: {
-            self.view.alpha = 1.0
-            self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        })
-    }
-    
-    /**
-     Animation for when the popup is closed.
-     */
-    func removeAnimation() {
-        UIView.animate(withDuration: 0.25, animations: {
-            self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-            self.view.alpha = 0.0
-        }, completion: { (finished: Bool) in
-            if finished {
-                CalendarViewController.newEventPopupIsVisible = false
-                self.view.removeFromSuperview()
-            }
-        })
+        self.tabBarController!.selectedIndex = 0
     }
     
     // MARK: - Convenience Methods

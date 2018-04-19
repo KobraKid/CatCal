@@ -8,5 +8,8 @@
 
 import Foundation
 
+/**
+ Keys used as constants to notify disparate parts of the app of certain events.
+ */
 let alertKey = "com.dotdev.catcal.Alert"
 let eventsRequireRefreshKey = "com.dotdev.catcal.RefreshEventsList"

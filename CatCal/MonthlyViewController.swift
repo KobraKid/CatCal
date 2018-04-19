@@ -10,7 +10,8 @@ import UIKit
 import JTAppleCalendar
 
 class MonthlyViewController: UIViewController {
-    
+
+
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
@@ -36,7 +37,6 @@ func handleCelltextColor(view: JTAppleCell?, cellState: CellState){
     } else {
         validCell.dateLabel.textColor = UIColor.gray
     }
-    
 }
 
 extension MonthlyViewController: JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSource {
@@ -55,8 +55,10 @@ extension MonthlyViewController: JTAppleCalendarViewDelegate,JTAppleCalendarView
         formatter.dateFormat = "yyyy MM DD"
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
+        
         let startDate = formatter.date(from: "2016 03 01")!
         let endDate = formatter.date(from: "2030 12 31")!
+        
         let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
         return parameters
     }

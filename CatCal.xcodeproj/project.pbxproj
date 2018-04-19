@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18273FBD208586F30059FDF1 /* WeeklyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18273FBC208586F20059FDF1 /* WeeklyCell.swift */; };
+		18273FBF20858C3B0059FDF1 /* WeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18273FBE20858C3B0059FDF1 /* WeeklyViewController.swift */; };
 		1827B088202132370078AE83 /* MonthlyCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827B087202132370078AE83 /* MonthlyCalendarCell.swift */; };
 		1827B08A202134020078AE83 /* MonthlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827B089202134020078AE83 /* MonthlyViewController.swift */; };
 		4C0B26B41FD7672500DED93E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0B26B31FD7672500DED93E /* AppDelegate.swift */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		17924E7C7773510EB2635591 /* Pods-CatCal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatCal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CatCal/Pods-CatCal.debug.xcconfig"; sourceTree = "<group>"; };
+		18273FBC208586F20059FDF1 /* WeeklyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCell.swift; sourceTree = "<group>"; };
+		18273FBE20858C3B0059FDF1 /* WeeklyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyViewController.swift; sourceTree = "<group>"; };
 		1827B087202132370078AE83 /* MonthlyCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarCell.swift; sourceTree = "<group>"; };
 		1827B089202134020078AE83 /* MonthlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyViewController.swift; sourceTree = "<group>"; };
 		4C0B26B01FD7672500DED93E /* CatCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +124,8 @@
 				4CEA84A12012D7CB001FC89C /* APICallHandler.swift */,
 				4C0B26BA1FD7672500DED93E /* Assets.xcassets */,
 				4C0B26BF1FD7672500DED93E /* Info.plist */,
+				18273FBC208586F20059FDF1 /* WeeklyCell.swift */,
+				18273FBE20858C3B0059FDF1 /* WeeklyViewController.swift */,
 				4C3984FB20858CF6002C771F /* Localizable.strings */,
 			);
 			path = CatCal;
@@ -277,7 +283,9 @@
 				4CED90621FE089A20064EF58 /* NewEventViewController.swift in Sources */,
 				4C0B26B61FD7672500DED93E /* DailyViewController.swift in Sources */,
 				4C45C851205CDDB1007A3A93 /* FriendsListViewController.swift in Sources */,
+				18273FBD208586F30059FDF1 /* WeeklyCell.swift in Sources */,
 				4C45C853205CED28007A3A93 /* FriendCell.swift in Sources */,
+				18273FBF20858C3B0059FDF1 /* WeeklyViewController.swift in Sources */,
 				4C0B26CA1FD7AE3000DED93E /* DailyCalendarCell.swift in Sources */,
 				4CEA84A420131020001FC89C /* NotificationCenterKeys.swift in Sources */,
 				4C0B26B41FD7672500DED93E /* AppDelegate.swift in Sources */,

@@ -115,6 +115,8 @@
 				4C3984FE20859189002C771F /* CalendarViewController.swift */,
 				4C0B26B51FD7672500DED93E /* DailyViewController.swift */,
 				4C0B26C91FD7AE3000DED93E /* DailyCalendarCell.swift */,
+				18273FBE20858C3B0059FDF1 /* WeeklyViewController.swift */,
+				18273FBC208586F20059FDF1 /* WeeklyCell.swift */,
 				1827B089202134020078AE83 /* MonthlyViewController.swift */,
 				1827B087202132370078AE83 /* MonthlyCalendarCell.swift */,
 				4C45C850205CDDB1007A3A93 /* FriendsListViewController.swift */,
@@ -124,8 +126,6 @@
 				4CEA84A12012D7CB001FC89C /* APICallHandler.swift */,
 				4C0B26BA1FD7672500DED93E /* Assets.xcassets */,
 				4C0B26BF1FD7672500DED93E /* Info.plist */,
-				18273FBC208586F20059FDF1 /* WeeklyCell.swift */,
-				18273FBE20858C3B0059FDF1 /* WeeklyViewController.swift */,
 				4C3984FB20858CF6002C771F /* Localizable.strings */,
 			);
 			path = CatCal;

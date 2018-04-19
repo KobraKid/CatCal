@@ -14,6 +14,7 @@ class WeeklyViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = NSLocalizedString("CatCal", comment: "")
     }
 }
 

@@ -36,7 +36,7 @@ class DailyViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("CatCal", comment: "")
+        self.navigationItem.title = NSLocalizedString("CatCal", comment: "")
         
         collectionView!.delegate = self
         collectionView!.register(DailyCalendarCell.self, forCellWithReuseIdentifier: cellID)

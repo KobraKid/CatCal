@@ -19,7 +19,7 @@ class MonthlyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("CatCal", comment: "")
+        self.navigationItem.title = NSLocalizedString("CatCal", comment: "")
     }
     
     @IBAction func openFriendsList(_ sender: Any) {

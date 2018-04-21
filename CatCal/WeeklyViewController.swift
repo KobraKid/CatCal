@@ -12,10 +12,29 @@ import JTAppleCalendar
 class WeeklyViewController: UIViewController {
     let formatter = DateFormatter()
     
+    @IBOutlet weak var weeklyScrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = NSLocalizedString("CatCal", comment: "")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.weeklyScrollView.delegate = self
+        weeklyScrollView.isScrollEnabled = true
+        weeklyScrollView.contentSize = CGSize(width: 414, height: 757)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        weeklyScrollView.isScrollEnabled = true
+        weeklyScrollView.contentSize = CGSize(width: 414, height: 757)
+    }
+}
+
+extension WeeklyViewController: UIScrollViewDelegate {
+    
 }
 
 //func handleCelltextColor(view: JTAppleCell?, cellState: CellState){

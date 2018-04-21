@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ A cell used to represent the fullscreen/expanded version of a Friend on the Friends page.
+ */
 class ExpandedFriendCell: FriendCell {
     
     override func draw(_ rect: CGRect) {
@@ -37,6 +40,7 @@ class ExpandedFriendCell: FriendCell {
         drawFriendFreeTime(ctx, x: zeroX, y: zeroY, width: graphWidth, height: graphHeight)
     }
     
+    // Fill the colored rectangles representing free time
     func drawFriendFreeTime(_ ctx: CGContext, x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat) {
         ctx.setFillColor(UIColor.red.cgColor)
         ctx.setAlpha(0.5)
@@ -44,7 +48,7 @@ class ExpandedFriendCell: FriendCell {
         var free = true;
         var offset: CGFloat = 0
         while offset < 24 && index < freeTime.count {
-            log.info("Running drawFriendFreeTime loop \(String(describing: freeTime[index]))")
+            log.info("Drawing ~a friend's~ free time with block size \(String(describing: freeTime[index]))")
             if (free) {
                 ctx.addRect(CGRect(x: x + (width / 3),
                                y: y + (offset * height / 24),
@@ -56,13 +60,21 @@ class ExpandedFriendCell: FriendCell {
             free = !free
             index += 1
         }
+        if offset < 24 {
+            let remainder: CGFloat = 24.0 - offset
+            ctx.addRect(CGRect(x: x + (width / 3),
+                               y: y + (offset * height / 24),
+                               width: width * 2 / 3,
+                               height: (height / 24) * remainder))
+            ctx.fillPath()
+        }
         ctx.setFillColor(UIColor.blue.cgColor)
         ctx.setAlpha(0.5)
         index = 0
         free = true;
         offset = 0.0
         while offset < 24 && index < FriendsListViewController.myFreeTime.count {
-            log.info("Running drawMyFreeTime loop \(String(describing: FriendsListViewController.myFreeTime[index]))")
+            log.info("Drawing ~my~ free time with block size \(String(describing: FriendsListViewController.myFreeTime[index]))")
             if (free) {
                 ctx.addRect(CGRect(x: x,
                                    y: y + (offset * height / 24),
@@ -73,6 +85,14 @@ class ExpandedFriendCell: FriendCell {
             offset += CGFloat(FriendsListViewController.myFreeTime[index])
             free = !free
             index += 1
+        }
+        if offset < 24 {
+            let remainder: CGFloat = 24.0 - offset
+            ctx.addRect(CGRect(x: x,
+                               y: y + (offset * height / 24),
+                               width: width * 2 / 3,
+                               height: (height / 24) * remainder))
+            ctx.fillPath()
         }
     }
     

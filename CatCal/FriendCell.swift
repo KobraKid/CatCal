@@ -21,7 +21,8 @@ class FriendCell: UICollectionViewCell {
         super.init(frame: frame)
         
         textView = UITextView(frame: CGRect(x: padding, y: 0, width: frame.size.width - CGFloat(2 * padding), height: frame.size.height / 2))
-        textView.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize * 0.75)
+        textView.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
+        textView.textColor = UIColor.white
         textView.textAlignment = .natural
         textView.backgroundColor = UIColor.clear
         textView.isUserInteractionEnabled = false

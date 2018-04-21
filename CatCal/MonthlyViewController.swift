@@ -20,6 +20,12 @@ class MonthlyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = NSLocalizedString("CatCal", comment: "")
+        
+        formatter.dateFormat = "yyyy"
+        self.year.text = formatter.string(from: Date())
+        
+        formatter.dateFormat = "MMMM"
+        month.text = formatter.string(from: Date())
     }
     
     @IBAction func openFriendsList(_ sender: Any) {
@@ -58,6 +64,9 @@ extension MonthlyViewController: JTAppleCalendarViewDelegate,JTAppleCalendarView
         
         let startDate = formatter.date(from: "2016 03 01")!
         let endDate = formatter.date(from: "2030 12 31")!
+        
+        let today: Date = Date()
+        calendar.scrollToDate(today, triggerScrollToDateDelegate: true, animateScroll: false, preferredScrollPosition: nil, extraAddedOffset: 0.0, completionHandler: nil)
         
         let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
         return parameters

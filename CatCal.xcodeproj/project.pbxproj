@@ -17,6 +17,7 @@
 		4C0B26C61FD7687500DED93E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0B26C51FD7687500DED93E /* GoogleService-Info.plist */; };
 		4C0B26C81FD7A25800DED93E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0B26C71FD7A25800DED93E /* Main.storyboard */; };
 		4C0B26CA1FD7AE3000DED93E /* DailyCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0B26C91FD7AE3000DED93E /* DailyCalendarCell.swift */; };
+		4C1C056C208ADDE9000E09BF /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C056B208ADDE9000E09BF /* FriendViewController.swift */; };
 		4C2DE140205DC2910061B4D0 /* ExpandedFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2DE13F205DC2910061B4D0 /* ExpandedFriendCell.swift */; };
 		4C3984F920858CF6002C771F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C3984FB20858CF6002C771F /* Localizable.strings */; };
 		4C3984FF20859189002C771F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3984FE20859189002C771F /* CalendarViewController.swift */; };
@@ -43,6 +44,7 @@
 		4C0B26C51FD7687500DED93E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C0B26C71FD7A25800DED93E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4C0B26C91FD7AE3000DED93E /* DailyCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCalendarCell.swift; sourceTree = "<group>"; };
+		4C1C056B208ADDE9000E09BF /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		4C2DE13F205DC2910061B4D0 /* ExpandedFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedFriendCell.swift; sourceTree = "<group>"; };
 		4C3984FA20858CF6002C771F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C3984FD20858D38002C771F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				1827B089202134020078AE83 /* MonthlyViewController.swift */,
 				1827B087202132370078AE83 /* MonthlyCalendarCell.swift */,
 				4C45C850205CDDB1007A3A93 /* FriendsListViewController.swift */,
+				4C1C056B208ADDE9000E09BF /* FriendViewController.swift */,
 				4C45C852205CED28007A3A93 /* FriendCell.swift */,
 				4C2DE13F205DC2910061B4D0 /* ExpandedFriendCell.swift */,
 				4CED90611FE089A20064EF58 /* NewEventViewController.swift */,
@@ -289,6 +292,7 @@
 				4C0B26CA1FD7AE3000DED93E /* DailyCalendarCell.swift in Sources */,
 				4CEA84A420131020001FC89C /* NotificationCenterKeys.swift in Sources */,
 				4C0B26B41FD7672500DED93E /* AppDelegate.swift in Sources */,
+				4C1C056C208ADDE9000E09BF /* FriendViewController.swift in Sources */,
 				1827B088202132370078AE83 /* MonthlyCalendarCell.swift in Sources */,
 				4CEA84A22012D7CB001FC89C /* APICallHandler.swift in Sources */,
 				4C2DE140205DC2910061B4D0 /* ExpandedFriendCell.swift in Sources */,

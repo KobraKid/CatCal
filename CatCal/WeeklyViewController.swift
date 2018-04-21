@@ -13,6 +13,7 @@ class WeeklyViewController: UIViewController {
     let formatter = DateFormatter()
     
     @IBOutlet weak var weeklyScrollView: UIScrollView!
+    private var refreshTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +24,19 @@ class WeeklyViewController: UIViewController {
         super.viewWillAppear(animated)
         self.weeklyScrollView.delegate = self
         weeklyScrollView.isScrollEnabled = true
-        weeklyScrollView.contentSize = CGSize(width: 414, height: 757)
+        weeklyScrollView.contentSize = CGSize(width: 414, height: 1000)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         weeklyScrollView.isScrollEnabled = true
-        weeklyScrollView.contentSize = CGSize(width: 414, height: 757)
+        weeklyScrollView.contentSize = CGSize(width: 414, height: 1000)
+    }
+    
+    @IBAction func openFriendsList(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let friendsListViewController = storyBoard.instantiateViewController(withIdentifier: "FriendsList") as! FriendsListViewController
+        self.navigationController!.pushViewController(friendsListViewController, animated: true)
     }
 }
 
@@ -67,6 +74,9 @@ extension WeeklyViewController: JTAppleCalendarViewDelegate,JTAppleCalendarViewD
         
         let startDate = formatter.date(from: "2016 03 01")!
         let endDate = formatter.date(from: "2030 12 31")!
+        
+        let today: Date = Date()
+        calendar.scrollToDate(today, triggerScrollToDateDelegate: true, animateScroll: false, preferredScrollPosition: nil, extraAddedOffset: 0.0, completionHandler: nil)
         
         let parameters = ConfigurationParameters(startDate: startDate, endDate: endDate, numberOfRows: 1)
         return parameters

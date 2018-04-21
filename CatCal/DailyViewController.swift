@@ -125,7 +125,8 @@ extension DailyViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellID, for: indexPath) as! DailyCalendarCell
         cell.textLabel.text = DailyViewController.events[indexPath.item].description
-        cell.backgroundColor = indexPath.item % 2 == 0 ? UIColor.white : UIColor.lightGray
+        cell.textLabel.textColor = UIColor.white
+        cell.backgroundColor = indexPath.item % 2 == 0 ? UIColor.purple : UIColor.init(red: 73, green: 26, blue: 136, alpha: 0)
         return cell
     }
     
@@ -145,7 +146,8 @@ extension DailyViewController: UICollectionViewDelegateFlowLayout {
         log.debug("You clicked on item \(indexPath.item), which has ID \(id)")
         if id != "0" {
             log.verbose("Now deleting...")
-            googleCalendar.queryAPI(requestType: .DELETE, params: ["eventId" : id])
+            //googleCalendar.queryAPI(requestType: .DELETE, params: ["eventId" : id])
+            log.debug("Deleting events temporarily disabled")
         }
     }
     

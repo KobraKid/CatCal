@@ -12,10 +12,10 @@ import JTAppleCalendar
 class MonthlyViewController: UIViewController {
 
 
-    @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
     let formatter = DateFormatter()
+    let todayColor = UIColor.init(red: 255, green: 255, blue: 0, alpha: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,14 +46,28 @@ func handleCelltextColor(view: JTAppleCell?, cellState: CellState){
 }
 
 extension MonthlyViewController: JTAppleCalendarViewDelegate,JTAppleCalendarViewDataSource {
-    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
     
+    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
     }
     
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
-        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! MonthlyCalendarCell
+        
+        let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "MonthlyCalendarCell", for: indexPath) as! MonthlyCalendarCell
         cell.dateLabel.text = cellState.text
         handleCelltextColor(view: cell, cellState: cellState)
+        
+        formatter.dateFormat = "yyyy MM dd"
+        let currentDate = formatter.string(from: Date())
+        let cellStateDate = formatter.string(from: cellState.date)
+        if currentDate == cellStateDate {
+            cell.dateLabel.textColor = UIColor.black
+            cell.contentView.layer.backgroundColor = todayColor.cgColor
+            cell.contentView.layer.cornerRadius = 24.0
+            cell.contentView.layer.borderWidth = 1.0
+            cell.contentView.layer.borderColor = UIColor.clear.cgColor
+            cell.contentView.layer.masksToBounds = true
+        }
+        
         return cell
     }
     

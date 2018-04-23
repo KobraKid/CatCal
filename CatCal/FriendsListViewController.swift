@@ -30,6 +30,9 @@ class FriendsListViewController: UICollectionViewController {
         super.viewDidLoad()
         log.info("Friends List opened");
         
+        // Apply theme
+        collectionView!.backgroundColor = bgColor
+        
         collectionView!.delegate = self
         collectionView!.register(FriendCell.self, forCellWithReuseIdentifier: cellID)
         collectionView!.register(ExpandedFriendCell.self, forCellWithReuseIdentifier: cellID2)
@@ -117,7 +120,7 @@ extension FriendsListViewController: UICollectionViewDelegateFlowLayout {
 //        }
         
         // Zebra-stripe the cells
-        cell.backgroundColor = indexPath.item % 2 == 0 ? UIColor.init(red: 73, green: 26, blue: 136, alpha: 0) : UIColor.purple
+        cell.backgroundColor = indexPath.item % 2 == 0 ? UIColor(red: 73.0/255.0, green: 26.0/255.0, blue: 136.0/255.0, alpha: 1.0) : UIColor.purple
         return cell
     }
     

@@ -21,8 +21,12 @@ class NewEventViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var startTime: UIDatePicker!
+    @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var endTime: UIDatePicker!
+    @IBOutlet weak var okayButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     private let googleCalendar = GoogleAPIHandler()
     
     // MARK: - Popup Lifecycle
@@ -32,6 +36,20 @@ class NewEventViewController: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Apply theme
+        self.view.backgroundColor = bgColor
+        self.titleTextField.textColor = textColor
+        self.descriptionTextField.textColor = textColor
+        self.startLabel.textColor = textColor
+        self.endLabel.textColor = textColor
+        self.startTime.setValue(textColor, forKeyPath: "textColor")
+        self.endTime.setValue(textColor, forKeyPath: "textColor")
+        self.okayButton.setTitleColor(okayColor, for: [])
+        self.cancelButton.setTitleColor(cancelColor, for: [])
+        
+        // Apply title
+        self.title = "Create New Event"
     }
     
     override func viewDidAppear(_ animated: Bool) {

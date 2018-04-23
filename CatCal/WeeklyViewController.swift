@@ -22,6 +22,18 @@ class WeeklyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Populate time list
+        let midnight = UILabel()
+        midnight.text = "12 am"
+        midnight.textColor = textColor
+        timeStackView.addArrangedSubview(midnight)
+        for i in 0...22 {
+            let label = UILabel()
+            label.text =  String(describing: (i % 12) + 1) + (i < 11 ? " am" : " pm")
+            label.textColor = textColor
+            timeStackView.addArrangedSubview(label)
+        }
+        
         // Apply theme
         self.view.backgroundColor = bgColor
         self.calendar.backgroundColor = bgColor

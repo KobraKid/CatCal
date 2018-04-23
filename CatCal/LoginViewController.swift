@@ -24,6 +24,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Apply theme
+        self.view.backgroundColor = bgColor
+        
         // Configure Google Sign-in
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self

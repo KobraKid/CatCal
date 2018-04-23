@@ -16,7 +16,10 @@ class FriendViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Apply title
         self.title = friendName
+        
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d, yyyy"

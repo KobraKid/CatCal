@@ -25,7 +25,7 @@
 		4C45C851205CDDB1007A3A93 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45C850205CDDB1007A3A93 /* FriendsListViewController.swift */; };
 		4C45C853205CED28007A3A93 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45C852205CED28007A3A93 /* FriendCell.swift */; };
 		4CEA84A22012D7CB001FC89C /* APICallHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEA84A12012D7CB001FC89C /* APICallHandler.swift */; };
-		4CEA84A420131020001FC89C /* NotificationCenterKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEA84A320131020001FC89C /* NotificationCenterKeys.swift */; };
+		4CEA84A420131020001FC89C /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEA84A320131020001FC89C /* Global.swift */; };
 		4CED90621FE089A20064EF58 /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CED90611FE089A20064EF58 /* NewEventViewController.swift */; };
 		8F4227732B35103190B8AD12 /* Pods_CatCal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0EEC6CA0DC9F8F5A2EF9237 /* Pods_CatCal.framework */; };
 /* End PBXBuildFile section */
@@ -53,7 +53,7 @@
 		4C45C850205CDDB1007A3A93 /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		4C45C852205CED28007A3A93 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4CEA84A12012D7CB001FC89C /* APICallHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICallHandler.swift; sourceTree = "<group>"; };
-		4CEA84A320131020001FC89C /* NotificationCenterKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterKeys.swift; sourceTree = "<group>"; };
+		4CEA84A320131020001FC89C /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		4CED90611FE089A20064EF58 /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
 		5033BA5A67C77B900F289B78 /* Pods-CatCal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatCal.release.xcconfig"; path = "Pods/Target Support Files/Pods-CatCal/Pods-CatCal.release.xcconfig"; sourceTree = "<group>"; };
 		D0EEC6CA0DC9F8F5A2EF9237 /* Pods_CatCal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CatCal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				4C0B26B31FD7672500DED93E /* AppDelegate.swift */,
-				4CEA84A320131020001FC89C /* NotificationCenterKeys.swift */,
+				4CEA84A320131020001FC89C /* Global.swift */,
 				4C0B26C71FD7A25800DED93E /* Main.storyboard */,
 				4C4410132085AB2900A31188 /* LoginViewController.swift */,
 				4C3984FE20859189002C771F /* CalendarViewController.swift */,
@@ -290,7 +290,7 @@
 				4C45C853205CED28007A3A93 /* FriendCell.swift in Sources */,
 				18273FBF20858C3B0059FDF1 /* WeeklyViewController.swift in Sources */,
 				4C0B26CA1FD7AE3000DED93E /* DailyCalendarCell.swift in Sources */,
-				4CEA84A420131020001FC89C /* NotificationCenterKeys.swift in Sources */,
+				4CEA84A420131020001FC89C /* Global.swift in Sources */,
 				4C0B26B41FD7672500DED93E /* AppDelegate.swift in Sources */,
 				4C1C056C208ADDE9000E09BF /* FriendViewController.swift in Sources */,
 				1827B088202132370078AE83 /* MonthlyCalendarCell.swift in Sources */,

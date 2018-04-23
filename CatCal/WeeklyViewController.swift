@@ -13,10 +13,20 @@ class WeeklyViewController: UIViewController {
     let formatter = DateFormatter()
     
     @IBOutlet weak var weeklyScrollView: UIScrollView!
+    @IBOutlet weak var timeStackView: UIStackView!
+    @IBOutlet weak var weekStackView: UIStackView!
+    @IBOutlet weak var calendar: JTAppleCalendarView!
+    
     private var refreshTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Apply theme
+        self.view.backgroundColor = bgColor
+        self.calendar.backgroundColor = bgColor
+        
+        // Apply title
         self.navigationItem.title = NSLocalizedString("CatCal", comment: "")
     }
     

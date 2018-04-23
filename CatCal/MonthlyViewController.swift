@@ -14,11 +14,20 @@ class MonthlyViewController: UIViewController {
 
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
+    @IBOutlet weak var calendar: JTAppleCalendarView!
     let formatter = DateFormatter()
     let todayColor = UIColor.init(red: 255, green: 255, blue: 0, alpha: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Apply theme
+        self.view.backgroundColor = bgColor
+        self.year.textColor = textColor
+        self.month.textColor = textColor
+        self.calendar.backgroundColor = bgColor
+        
+        // Apply title
         self.navigationItem.title = NSLocalizedString("CatCal", comment: "")
         
         formatter.dateFormat = "yyyy"

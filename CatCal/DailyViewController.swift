@@ -36,6 +36,11 @@ class DailyViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Apple color theme
+        collectionView!.backgroundColor = bgColor
+        
+        // Apply title
         self.navigationItem.title = NSLocalizedString("CatCal", comment: "")
         
         collectionView!.delegate = self
@@ -146,8 +151,7 @@ extension DailyViewController: UICollectionViewDelegateFlowLayout {
         log.debug("You clicked on item \(indexPath.item), which has ID \(id)")
         if id != "0" {
             log.verbose("Now deleting...")
-            //googleCalendar.queryAPI(requestType: .DELETE, params: ["eventId" : id])
-            log.debug("Deleting events temporarily disabled")
+            googleCalendar.queryAPI(requestType: .DELETE, params: ["eventId" : id])
         }
     }
     
